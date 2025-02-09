@@ -4,12 +4,11 @@ const { PeerServer } = require('peer');
 const app = express();
 const PORT = process.env.PORT || 9001;
 
-// Create the PeerJS server
+// Create the PeerServer instance without the `port` option
 const peerServer = PeerServer({
-  port: PORT,
-  path: '/myapp',
-  allow_discovery: true,
-});
+    path: '/myapp',
+    allow_discovery: true,
+  });
 
 app.use('/peerjs', peerServer);
 
