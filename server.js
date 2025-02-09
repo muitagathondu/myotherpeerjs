@@ -1,23 +1,17 @@
-const express = require('express');
-const { PeerServer } = require('peer');
+const socket = new WebSocket('wss://https://myotherpeerjs.onrender.com/myapp');
 
-const app = express();
-const PORT = process.env.PORT || 9001;
+socket.onopen = function(event) {
+  console.log("WebSocket is open now.");
+};
 
-// Create the PeerServer instance without the `port` option
-const peerServer = PeerServer({
+socket.onclose = function(event) {
+  console.log("WebSocket is closed now.");
+};
 
-    path: '/myapp',
-    key: process.env.PEERJS_KEY,
-    allow_discovery: true,
-  });
+socket.onerror = function(error) {
+  console.log("WebSocket error:", error);
+};
 
-app.use('/myapp', peerServer);
-
-app.get('/', (req, res) => {
-  res.send('PeerJS Server is running!');
-});
-
-app.listen(PORT, () => {
-  console.log(`PeerJS Server running at http://localhost:${PORT}`);
-});
+socket.onmessage = function(event) {
+  console.log("Received message:", event.data);
+};
