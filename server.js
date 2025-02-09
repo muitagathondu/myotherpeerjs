@@ -12,7 +12,7 @@ const peerServer = PeerServer({
     allow_discovery: true,
   });
 
-app.use('/peerjs', peerServer);
+app.use('/myapp', peerServer);
 
 app.get('/', (req, res) => {
   res.send('PeerJS Server is running!');
