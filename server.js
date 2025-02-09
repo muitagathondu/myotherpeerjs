@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 9001;
 // Create the PeerServer instance without the `port` option
 const peerServer = PeerServer({
     path: '/myapp',
+    key:'muitawagathondu',
     allow_discovery: true,
   });
 
